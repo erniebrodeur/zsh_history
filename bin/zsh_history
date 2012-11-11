@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'zsh_history'
+
+include Bini
+
+Options.banner = "Grep all your .zsh_history_ files at once.\nWorks via an external call to grep to keep it recognizable."
+Options.parse!
+
+if !ARGV
+  puts 'We need something to search for.'
+  exit
+end
+
+# We treat all arguments like they are one word, that might change later.
+
+files = Dir.glob("#{Dir.home}/.zsh_history*")
+puts `grep --color=yes '#{ARGV.join " "}' #{files.join ' '}`
