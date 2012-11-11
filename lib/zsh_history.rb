@@ -1,3 +1,6 @@
+require "bini"
+require "bini/optparser"
+
 require "zsh_history/version"
 
 module ZshHistory
